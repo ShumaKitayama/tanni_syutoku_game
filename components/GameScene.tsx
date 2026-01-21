@@ -5,7 +5,29 @@ import * as THREE from 'three';
 import { GameStatus, UnitData, SPAWN_DISTANCE, PLAYER_Z, LANE_WIDTH } from '../types';
 
 // Fix for missing R3F JSX types
+// We need to augment both global JSX and React.JSX to cover different TS setups
 declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      boxGeometry: any;
+      capsuleGeometry: any;
+      sphereGeometry: any;
+      meshStandardMaterial: any;
+      meshToonMaterial: any;
+      pointLight: any;
+      icosahedronGeometry: any;
+      color: any;
+      fog: any;
+      ambientLight: any;
+      spotLight: any;
+      directionalLight: any;
+    }
+  }
+}
+
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       group: any;
